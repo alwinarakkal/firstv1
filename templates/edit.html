@@ -1,0 +1,52 @@
+{% extends 'log.html' %}
+{% block page_content %}
+{% load widget_tweaks %}
+<body>
+  <div class="jumbotron" style="height: 10%;background-color:gray">
+   <p1 style="float:left"><a class="btn btn-primary  pl " href="/index">HOME</a></p1> 
+  <h1><center>EDIT PROFILE </center></h1>
+
+    <!-- <h3><center><a class="btn btn-primary  pl " href="/index">HOME</a></center></h3> -->
+</div>
+
+
+<form method="POST">
+    {% csrf_token %}
+       <div class="form-group cl">
+        first name:{% render_field form.first_name  type="text" class="form-control" placeholder="first name"%}
+      </div>
+      <div class="form-group cl">
+         last name:{% render_field form.last_name  type="text" class="form-control" placeholder="last name"%}
+      </div>
+       <div class="form-group cl" >
+       username: {% render_field form.username  type="text" class="form-control" placeholder="username"%}
+    </div>
+
+    <div class="form-group cl">
+      email:{% render_field form.email  type="text" class="form-control" placeholder="email"%}
+  </div>
+  <div class="form-group cl"style="  visibility: hidden;">
+    {% render_field form.date_joined  type="text" class="form-control" placeholder="username"%}
+</div> 
+
+    
+
+
+          
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn button">
+      </div> 
+       <!-- {{form.as_p}}
+      <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-primary py-3 px-5">
+      </div>  -->
+</form>
+
+        <ul>
+            {% for field in form %}
+                {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+            {% endfor %}
+        </ul>
+
+</body>
+{% endblock %}
