@@ -7,6 +7,6 @@ class UserProfile(models.Model):
         flat_number = models.CharField(max_length=30)
         mobile_number = models.CharField(max_length=30)
 
-        def _str_(self):
-            return self.user
+        def __str__(self):
+            return self.user.username
 
