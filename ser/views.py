@@ -162,7 +162,7 @@ def Myreqview(request):              #display service requests
 
     query_results = Post.objects.all().order_by('-created')
     aut=request.user.username
-
+                                                    #pagination
     paginator=Paginator(query_results,5)
     try:
         page = int(request.GET.get('page','1'))
@@ -172,6 +172,8 @@ def Myreqview(request):              #display service requests
         query_results = paginator.page(page)
     except(EmptyPage, InvalidPage):
         query_results=paginator.page(paginator.num_pages)
+                                                     #/pagination                   
+
     context = {
         'details':query_results,
         'aut':aut
@@ -183,7 +185,7 @@ def MyView(request):                #display ordered items
 
     query_results = Item.objects.all().order_by('-created')
     aut=request.user.username
-   
+                                                        #pagination
     paginator=Paginator(query_results,5)
     try:
         page = int(request.GET.get('page','1'))
@@ -193,6 +195,7 @@ def MyView(request):                #display ordered items
         query_results = paginator.page(page)
     except(EmptyPage, InvalidPage):
         query_results=paginator.page(paginator.num_pages)
+                                                        #/pagination
     context = {
         'details':query_results,
         'aut':aut
