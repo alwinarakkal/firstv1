@@ -13,4 +13,5 @@ urlpatterns = [
     path('gmail/',views.shopmail,name="gmail"),
     path('',include('signin.urls')),
     
+    
 ]

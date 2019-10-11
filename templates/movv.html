@@ -1,0 +1,27 @@
+{% extends 'shopping.html' %}
+{% load static %}
+
+{% block page_content %}
+
+
+{% load widget_tweaks %}
+
+
+<head>
+  <title>shop</title>
+  <meta charset="utf-8">
+ </head>
+<body>
+
+<div class="jumbotron" style="background-color:lightgray">
+	<h1><center>ORDERED ITEMS</center></h1>
+	
+
+    <hr>
+    <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
+</div>
+<div class="container-fluid pl" style="padding-left: 20px;padding-right: 20px;">
+{{username}}
+
+</body>
+	{% endblock %}

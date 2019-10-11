@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from .models import UserProfile
 from .forms import ExtendedUserCreationForm, UserProfileForm,Editprofile
 
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -63,7 +64,7 @@ def register(request):
 
 
 
-
+@login_required
 def edit(request):
     if request.method == 'POST':
         form = Editprofile(request.POST,instance=request.user)

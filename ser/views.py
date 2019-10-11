@@ -12,10 +12,10 @@ from django.core.paginator import Paginator
 #for email
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 
 
-
-
+@login_required
 def req(request):
     aut=request.user.username
     if request.method == "POST":
@@ -32,7 +32,7 @@ def req(request):
     
 
 
-
+@login_required
 def shop(request):                                              #neww
     aut=request.user.username
     if request.method == "POST":
@@ -48,7 +48,7 @@ def shop(request):                                              #neww
     }
     return render(request, 'buy2.html', context)
 
-
+@login_required
 def serv_mail(request):    
 
     current_user=request.user
@@ -77,7 +77,7 @@ def serv_mail(request):
     send_mail( subject, message, email_from, recipient_list )    
     return redirect('show')
 
-
+@login_required
 def shopmail(request):    
     
     current_user=request.user
@@ -157,7 +157,7 @@ def shopmail(request):
     
     return redirect('list')
 
-
+@login_required
 def Myreqview(request):              #display service requests
 
     query_results = Post.objects.all().order_by('-created')
@@ -180,7 +180,7 @@ def Myreqview(request):              #display service requests
     }
     return render(request, 'show.html',context)
 
-
+@login_required
 def MyView(request):                #display ordered items
 
     query_results = Item.objects.all().order_by('-created')
