@@ -66,13 +66,19 @@ def register(request):
 
 @login_required
 def edit(request):
+    
+    
+    
     if request.method == 'POST':
+        
         form = Editprofile(request.POST,instance=request.user)
         if form.is_valid():
+ 
             form.save()
             print("valid")
             return redirect('index')
     else:
+        
         form = Editprofile(instance=request.user)
     return render(request, 'edit.html', {
         'form': form
