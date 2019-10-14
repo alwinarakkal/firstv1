@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h1 >Discussion</h1>
+<hr />
+<div class="row">
+    {% for post in posts %}
+
+
+
+
+    <div class="col-md-12">
+            <div class="blog-entry ftco-animate d-md-flex">
+            
+                <div class="text text-2 pl-md-4">
+      <h3 class="mb-2">{{ post.title }}</h3>
+      <div class="meta-wrap">
+                        <p class="meta">
+              <span><i class="icon-calendar mr-2" aria-hidden="true"></i>{{post.created_on.date }}</span>
+              <span><i class="icon-edit mr-2" aria-hidden="true"></i>{{post.aut }}</span>
+       
+         
+                            
+          </p>
+      </div>
+      <p class="mb-4">{{ post.body |slice:100  }}</p>
+      <p><a href="{% url 'QandA_detail' post.pk%}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+    </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock %}

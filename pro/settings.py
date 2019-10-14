@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'ser',
     'widget_tweaks',
     'signin',
+    'blog',
     
     
 ]

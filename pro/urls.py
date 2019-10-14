@@ -12,6 +12,6 @@ urlpatterns = [
     path('show/',views.Myreqview,name="show"),
     path('gmail/',views.shopmail,name="gmail"),
     path('',include('signin.urls')),
-    
+    path('',include('blog.urls')),
     
 ]
