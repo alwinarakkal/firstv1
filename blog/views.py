@@ -12,7 +12,8 @@ def blog_index(request):
     context = {
         "posts": posts,
     }
-    return render(request, "QandA_index.html", context)
+    return render(request, "wall.html", context)
+    
 @login_required
 def blog_detail(request, pk):
     post = Article.objects.get(pk=pk)
@@ -39,7 +40,7 @@ def blog_detail(request, pk):
         
     }
 
-    return render(request, "QandA_detail.html", context)
+    return render(request, "b_detail.html", context)
 
 @login_required
 def Ask_Form(request):
@@ -51,7 +52,7 @@ def Ask_Form(request):
 
 
             form.save()
-            return redirect('QandA_index')
+            return redirect('b_index')
         
 
     else:
