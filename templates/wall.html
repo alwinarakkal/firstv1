@@ -18,7 +18,7 @@
     <div class="col-md-12">
             <div class="blog-entry ftco-animate d-md-flex">
             
-                <div class="text text-2 pl-md-4">
+                <div class="text text-2 pl-md-4 ">
       <h3 class="mb-2">{{ post.title }}</h3>
       <div class="meta-wrap">
                         <p class="meta">
@@ -29,17 +29,35 @@
                             
           </p>
       </div>
-      <p class="mb-4">{{ post.body |slice:100  }}</p>
+      <p class="mb-4 card" style="width:50%">{{ post.body |slice:100  }}</p>
       <p><a href="{% url 'b_detail' post.pk%}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
     </div>
             </div>
+
+           
         </div>
     {% endfor %}
 </div>
 
 
 
-
+<div class="pagination" >
+    <ul style="margin-left: 40%">
+        
+        {% if posts.has_previous %}
+        <li style="display:inline-flex"><a href="?page={{ posts.previous_page_number }}" style="color:yellow"><strong><<</strong> &nbsp &nbsp</a></li>
+        {% endif %}
+        {% for pg in posts.paginator.page_range %}
+        {% if posts.number == pg %}
+<a href="?page={{ pg }}" style="color:yellow">{{ pg }}</a>
+    
+        {% endif %}
+        {% endfor %}
+        {% if posts.has_next %}
+        <li style="display:inline-flex"><a href="?page={{ posts.next_page_number }}" style="color:yellow"><strong>&nbsp &nbsp >></strong>   </a></li>
+        {% endif %}
+    </ul>
+</div>
 
 
 

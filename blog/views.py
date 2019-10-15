@@ -3,15 +3,27 @@ from .models import Article,Comment
 from django.views.generic import UpdateView,DeleteView
 from .forms import CommentForm,AskForm
 from django.contrib.auth.models import User
-
+from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def blog_index(request):
     posts = Article.objects.all().order_by('-created_on')
+                                                        #pagination
+    paginator=Paginator(posts,3)
+    try:
+        page = int(request.GET.get('page','1'))
+    except:
+        page = 1
+    try:
+        posts = paginator.page(page)
+    except(EmptyPage, InvalidPage):
+        posts=paginator.page(paginator.num_pages)
+                                                        #/pagination
     context = {
         "posts": posts,
     }
+    
     return render(request, "wall.html", context)
     
 @login_required
