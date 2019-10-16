@@ -12,9 +12,9 @@
           <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
       </div>
       
-<div class="">
-    <h1 ><b>{{ post.title }}</b></h1><hr>
-    <h5><b>posted by :{{ post.aut }}</b></h1>
+<div class="" style="color:white">
+    <h1 style="color:gray"><b>{{ post.title }}</b></h1><hr>
+    <h5>posted by : <b>{{ post.aut }}</b></h1>
     <small>
         {{ post.created_on.date }}
        
@@ -34,7 +34,7 @@
     
     
   <!--   action="/{{ post.pk }}/"  -->
-    <h3>Leave a comment:</h3>
+    <h3 style="color:white">Leave a comment:</h3>
     <form  method="post">
         {% csrf_token %}
         <div class="form-group">
