@@ -17,15 +17,18 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="flex-container ">
+<h1>&nbsp<br><br></h1>
+</div>
 <div class="flex-container " style="height:70px;">
-	<h1 class=" pl" >Shopping List</h1>
+	<h1 class=" pl" > <center><b>Shopping List</b></center></h1>
 </div>
 
 
 <div class="container-fluid" style="padding-left: 20px;padding-right: 20px;">
 	<div class="row ">
 		<a href="/list">
-  		<img src="{% static 'images/pic.png' %}" cart_items" style="width:50px;height:50px; ">
+  		<img src="{% static 'images/pic.png' %}" alt="cart items" style="width:50px;height:50px; ">
 </a>
 		<form class="form-signin" method="POST" >
                  {% csrf_token %}
@@ -76,7 +79,7 @@
 	</div>
 
 </div>
-	<div class="row hs">
+	<div class="row hs" style="float:right">
 		<br><br><hr>
 
 	<input type="submit" value="Submit" class="button" >

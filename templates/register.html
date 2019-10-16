@@ -1,69 +1,112 @@
-{% extends 'base.html' %}
+{% extends 'index2.html' %}
 {% load static %} 
 
 {% block page_content %}
 
 
     <body>
+      {% load widget_tweaks %}
 
 
 
-                <div style="padding :2%"> 
-                  <h1 style="color:white" >Signup</h1>
-                {% load widget_tweaks %}
-                <form class="form-signin" method="POST">
-                    {% csrf_token %}
-                <div >
-                    <div >
-                      <div action="#" >
-			                        <div class="form-group pl" >
-                            {% render_field form.username  type="text" class="form-control" placeholder="username"%}
-                        </div>
-                          <div class="form-group pl" >
-                              {% render_field form.first_name  type="text" class="form-control" placeholder="first name"%}
-                          </div>
-                          <div class="form-group pl" >
-                              {% render_field form.last_name  type="text" class="form-control" placeholder="last name"%}
-                          </div>
+                <div class="limiter">
+    <div class="container-login100">
+     
+      <div class="wrap-login100">
 
-                        <div class="form-group pl" >
-                          {% render_field form.email  type="text" class="form-control" placeholder="email"%}
-                      </div>
-                        <div class="form-group pl" >
-                            {% render_field form.password1  type="password" class="form-control" placeholder="password "%}
-                        </div>
-                        <div class="form-group pl" >
-                            {% render_field form.password2  type="password" class="form-control" placeholder="confirm password"%}
-						</div>
-						<div class="form-group pl" >
-                            {% render_field profile_form.flat_number  type="text" class="form-control" placeholder="flat number"%}
-						</div>
-						<div class="form-group pl" >
-                            {% render_field profile_form.mobile_number  type="text" class="form-control" placeholder="mobile number"%}
-                        </div>
-					
-                        <div class="form-group pl" >
-                          <input type="submit" value="Create" class="button">
-                        </div>
-                      </form>
-                    
-                    </div>
-                  </from>
-                  {% if form.errors %}
-	<!-- Error messaging -->
-	<div id="errors">
-		<div class="inner" style="color:red">
+        <form class="login100-form validate-form" method="POST">
+          
+          <span class="login100-form-title p-b-34">
+            Account Signup
+          </span>             
+           {% csrf_token %}
+
+            <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+            <input id="username" class="input100" type="text" name="username" placeholder="User name">
+           
+            <span class="focus-input100"></span>
+          </div>
+          <br>
+          <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" >
+            <input id="first_name" class="input100" type="text" name="first_name" placeholder="First name">
+          
+            <span class="focus-input100"></span>
+          </div>
+    
+
+          <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" >
+            <input id="last_name" class="input100" type="text" name="last_name" placeholder="last name">
+          
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type email">
+            <input id="email" class="input100" type="text" name="email" placeholder="email">
+          
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" >
+            <input id="password1" class="input100" type="password" name="password1" placeholder="password">
+          
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" >
+            <input id="password2" class="input100" type="password" name="password2" placeholder="password confirm">
+          
+            <span class="focus-input100"></span>
+          </div>
+
+          <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" >
+            <input id="flat_number" class="input100" type="text" name="flat_number" placeholder="flat number">
+          
+            <span class="focus-input100"></span>
+          </div>
+          <br>
+          <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" >
+            <input id="mobile_number" class="input100" type="text" name="mobile_number" placeholder="mobile number ">
+          
+            <span class="focus-input100"></span>
+          </div>
+          <br>
+
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn">
+              Sign Up
+            </button>
+            </div>
+            <div class="w-full text-center">
+            <a href="/accounts/login/" class="txt3"><br>
+             Login
+            </a>
+          </div>
+
+          </form>
+        <div class="login100-more" style="background-image: url('{% static 'bootstrap/Login_v17/images/s.jpg' %}');"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-4"></div>
+               
+        {% if form.errors %}
+	
+
+		<div  class="col-md-4" style="color:red;">
 			<p>There were some errors in the information you entered. <br>Please correct the following:</p>
 			{{ form.non_field_errors }}
 			<ul>
 				{% for field in form %}
 					{% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
-				{% endfor %}
+				{% endfor %}  
 			</ul>
 		</div>
-	</div>
+    <div class="col-md-4"></div>
+  </div>
+	
 {% endif %}
             
             
-      </body>
+    </body>
 {% endblock %}

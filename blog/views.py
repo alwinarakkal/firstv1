@@ -89,3 +89,5 @@ class post_delete(DeleteView):
     model = Article
     template_name = 'board_element_confirm_delete.html'
     success_url = '/h'
+
+

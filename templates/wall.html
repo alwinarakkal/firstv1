@@ -1,5 +1,8 @@
 {% extends "ex.html" %}
 {% block page_content %}
+<div class="flex-container ">
+<h1>&nbsp<br><br></h1>
+</div>
 <div class="jumbotron" style="background-color:lightgray">
 	<h1><center>Notices</center></h1>
 	
@@ -21,7 +24,7 @@
                 <div class="text text-2 pl-md-4 ">
       <h3 class="mb-2">{{ post.title }}</h3>
       <div class="meta-wrap">
-                        <p class="meta">
+                        <p class="meta" style="color:black">
               <span><i class="icon-calendar mr-2" aria-hidden="true"></i>{{post.created_on.date }}</span>
               <span><i class="icon-edit mr-2" aria-hidden="true"></i>{{post.aut }}</span>
        
@@ -45,16 +48,16 @@
     <ul style="margin-left: 40%">
         
         {% if posts.has_previous %}
-        <li style="display:inline-flex"><a href="?page={{ posts.previous_page_number }}" style="color:yellow"><strong><<</strong> &nbsp &nbsp</a></li>
+        <li style="display:inline-flex"><a href="?page={{ posts.previous_page_number }}" style="color:black"><strong><<</strong> &nbsp &nbsp</a></li>
         {% endif %}
         {% for pg in posts.paginator.page_range %}
         {% if posts.number == pg %}
-<a href="?page={{ pg }}" style="color:yellow">{{ pg }}</a>
+<a href="?page={{ pg }}" style="color:black">{{ pg }}</a>
     
         {% endif %}
         {% endfor %}
         {% if posts.has_next %}
-        <li style="display:inline-flex"><a href="?page={{ posts.next_page_number }}" style="color:yellow"><strong>&nbsp &nbsp >></strong>   </a></li>
+        <li style="display:inline-flex"><a href="?page={{ posts.next_page_number }}" style="color:black"><strong>&nbsp &nbsp >></strong>   </a></li>
         {% endif %}
     </ul>
 </div>
