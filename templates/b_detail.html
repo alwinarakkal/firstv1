@@ -11,19 +11,24 @@
           <hr>
           <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
       </div>
-      
+      <div class="row">
+        <div class="col-md-3"></div>
+
+
+
 <div class="" style="color:white">
-    <h1 style="color:gray"><b>{{ post.title }}</b></h1><hr>
-    <h5>posted by : <b>{{ post.aut }}</b></h1>
+    <h1 style="color:lightgray"><b>{{ post.title }}</b></h1><hr>
+    <h5>posted by : <b>{{ post.aut }}</b></h5>
     <small>
         {{ post.created_on.date }}
        
   
     </small>
-    <p style="background: whitesmoke ; padding: 1%; margin :2%">{{ post.body }}</p>
-    
+    <div class="card">
+    <p style="background: black ; padding: 1%; margin :2%; color:green">{{ post.body }}</p>
+    </div>
     {% if user.username == post.aut or user.is_superuser %}
-    
+    <hr>
     <form action="delete" style="display: inline-block;margin: 1%">
         <button  class ='butto'>delete</button>
     </form>
@@ -32,7 +37,7 @@
         </form>
     {% endif %}
     
-    
+    <hr>
   <!--   action="/{{ post.pk }}/"  -->
     <h3 style="color:white">Leave a comment:</h3>
     <form  method="post">
@@ -45,8 +50,8 @@
         </div>
         <button type="submit" class="butt" >Submit</button>
     </form>
- 
-    <h3  class="cl">Comments:</h3>
+ <hr>
+    <h3  class="cl" style="color:lightgray"><b>Comments:</b></h3>
     {% for comment in comments %}
     <p  class="cl">
         On {{comment.created_on.date }}&nbsp;
@@ -55,7 +60,8 @@
     </p>
     <p style="background-color: whitesmoke" >{{ comment.body }}</p>
     <hr>
- 
+  <div class="col-md-3"></div>
+</div>
     
     {% endfor %}
     
