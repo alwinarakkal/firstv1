@@ -12,13 +12,28 @@
 
 
         <body>
-   
+            <div class="flex-container ">
+<h1>&nbsp<br><br></h1>
+</div>
+
+            <div class="jumbotron" style="background-color:lightgray">
+  <h1><center>SERVICE</center></h1>
+  
+
+    <hr>
+    <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
+    <h3><a href="/show">
+      <img src="{% static 'images/service.png' %}" alt="cart_items" style="width:60px;height:60px;float:right; ">
+</a></h3>
+</div>
+
+   <!-- 
             <div style="padding :2%"> 
                <h1 id="colorlib-logo" class="mb-4 pl" ><br><br><center><b>SERVICE</b></center></h1>
                <a href="/show">
                <img src="{% static 'images/service.png' %}" alt="cart_items" style="width:50px;height:50px;">
             </a>
-
+ -->
              <form class="form-signin pl" method="POST" >
                  {% csrf_token %}
                  <div class="form-group"  style="  visibility: hidden;">
