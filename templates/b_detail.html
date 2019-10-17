@@ -11,12 +11,11 @@
           <hr>
           <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
       </div>
-      <div class="row">
-        <div class="col-md-3"></div>
+<div class="row">
+  <div class="col-md-3"></div>
 
 
-
-<div class="" style="color:white">
+<div  class="col-md-5" style="color:white">
     <h1 style="color:lightgray"><b>{{ post.title }}</b></h1><hr>
     <h5>posted by : <b>{{ post.aut }}</b></h5>
     <small>
@@ -60,10 +59,11 @@
     </p>
     <p style="background-color: whitesmoke" >{{ comment.body }}</p>
     <hr>
+      {% endfor %}
   <div class="col-md-3"></div>
-</div>
+</div></div>
     
-    {% endfor %}
+  
     
 </div>
 {% endblock %}
