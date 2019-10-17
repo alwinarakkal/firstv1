@@ -9,7 +9,7 @@
         
       
           <hr>
-          <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
+          <h3><center><a class="btn btn-primary  pl " href="/h" style="float:left">BACK</a></center></h3>
       </div>
 <div class="row">
   <div class="col-md-3"></div>
@@ -41,9 +41,8 @@
     <h3 style="color:white">Leave a comment:</h3>
     <form  method="post">
         {% csrf_token %}
-        <div class="form-group">
-            {{ form.author }}
-        </div>
+    
+        <input type="text" name="author" value="{{user.username}}" style="visibility: hidden;">
         <div class="form-group cl">
            <p  style="padding: 1%; margin :1%">{{ form.body }}</p> 
         </div>
