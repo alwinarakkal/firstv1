@@ -10,7 +10,6 @@ urlpatterns = [
             path('update',views.edit,name="update "),
             path('profile',views.profile,name="profile "),
 
-           
             url('', include('django.contrib.auth.urls')),
 ]
               
