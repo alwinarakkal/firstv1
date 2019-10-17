@@ -2,9 +2,7 @@
 <html>
 
 <head>
-	<meta charset="utf-8">
 	
-<head>
   <meta charset="utf-8">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
@@ -14,7 +12,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
+  <link  href='https://fonts.googleapis.com/css?family=Kaushan Script' rel='stylesheet'>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
@@ -53,6 +51,10 @@ body {
         background-repeat:repeat;
        background-size:cover;
 } 
+.table-hover {
+  color:lightblue;
+
+}
 .button {
   display: block;
   margin: 1px 60px;
@@ -239,7 +241,7 @@ function hasScrolled() {
               </li>
               {% if user.is_authenticated %}
               <li class="nav-item" style="display: inline-block;color:black">
-                <a class="nav-link"  href="#" >Me</a>
+                <a class="nav-link"  href="/profile"  >Me</a>
               </li>
               
               <li class="nav-item" style="display: inline-block;color:black">

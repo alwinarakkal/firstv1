@@ -83,3 +83,31 @@ def edit(request):
     return render(request, 'edit.html', {
         'form': form
     })
+
+
+
+@login_required
+def profile(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+        email= request.user.email
+        first_name= request.user.first_name
+
+        current_user=request.user
+        obj=UserProfile.objects.get(user=current_user)
+        flat_number=obj.flat_number
+        mobile_number=obj.mobile_number
+
+        
+    else:
+            username='not logged in'
+            flat_number='unknown'
+            email='unknown'
+            mobile_number='unknown'
+            first_name='unknown'
+
+
+    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
+
+    return render(request, 'pro.html', context)
+

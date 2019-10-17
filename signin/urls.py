@@ -8,6 +8,7 @@ urlpatterns = [
             path('',views.index,name="index "),
 
             path('update',views.edit,name="update "),
+            path('profile',views.profile,name="profile "),
         
               
           

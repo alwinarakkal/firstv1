@@ -1,18 +1,21 @@
-{% extends 'log.html' %}
+{% extends 'shopping.html' %}
 {% block page_content %}
 {% load widget_tweaks %}
 <body>
-  <div class="jumbotron" style="height: 10%;background-color:gray">
+  <div class="flex-container ">
+<h1>&nbsp<br><br></h1>
+</div>
+  <div class="jumbotron" style="height: 10%;background-color:#a3c2c2">
    <p1 style="float:left"><a class="btn btn-primary  pl " href="/index">HOME</a></p1> 
   <h1><center>EDIT PROFILE </center></h1>
-
-    <!-- <h3><center><a class="btn btn-primary  pl " href="/index">HOME</a></center></h3> -->
 </div>
 
-
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
 <form method="POST">
     {% csrf_token %}
-       <div class="form-group cl">
+       <div class="form-group cl" >
         first name:{% render_field form.first_name  type="text" class="form-control" placeholder="first name"%}
       </div>
       <div class="form-group cl">
@@ -41,9 +44,14 @@
         <input type="submit" value="Submit" class="btn btn-primary py-3 px-5">
       </div>  -->
 </form>
-        <ul>
+</div>
+ <div class="col-md-3" ></div>
+      </div>
+
+
+        <ul style="color:red">
             {% for field in form %}
-                {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+                {% if field.errors %}<li><center><br>{{ field.label }}: {{ field.errors|striptags }}<center></li>{% endif %}
             {% endfor %}
         </ul>
 
