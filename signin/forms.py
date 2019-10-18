@@ -26,7 +26,7 @@ class ExtendedUserCreationForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('flat_number', 'mobile_number')
+        fields = ('flat_number', 'mobile_number','pro_pic')
 
 
         

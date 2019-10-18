@@ -89,7 +89,7 @@ def edit(request):
 
     if request.method == 'POST':
         form=Editprofile(request.POST)
-        profile_form=UserProfileForm(request.POST)
+        profile_form=UserProfileForm(request.POST,request.FILES)
         
 
         try:
@@ -99,6 +99,7 @@ def edit(request):
             email = request.POST['email']
             flat = request.POST['flat_number']
             mob = request.POST['mobile_number']
+            pic = request.POST['pro_pic']
             user = User.objects.get(username=request.user)
             profile = UserProfile.objects.get(user=user)
             user.username = uname
@@ -108,6 +109,7 @@ def edit(request):
             user.save()
             profile.flat_number = flat
             profile.mobile_number = mob
+            profile.pro_pic=pic
             
             profile.save()
             
@@ -136,6 +138,7 @@ def profile(request):
         obj=UserProfile.objects.get(user=current_user)
         flat_number=obj.flat_number
         mobile_number=obj.mobile_number
+        pic=obj.pro_pic
 
         
     else:
@@ -146,7 +149,7 @@ def profile(request):
             first_name='unknown'
 
 
-    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
-
+    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name, 'pic':pic }
+# 'profile': UserProfile.objects.get(user=request.user)
     return render(request, 'pro.html', context)
 
