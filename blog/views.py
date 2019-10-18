@@ -41,6 +41,7 @@ def blog_detail(request, pk):
                 post=post
             )
             comment.save()
+            return redirect('/h')
 
     comments = Comment.objects.filter(post=post)
     aut=request.user.username

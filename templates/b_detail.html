@@ -22,7 +22,7 @@
        
   
     </small>
-    <div class="card">
+    <div class="card p-3">
     <p style="background: black ; padding: 1%; margin :2%; color:lightgray">{{ post.body }}</p>
     </div>
     {% if user.username == post.aut or user.is_superuser %}
@@ -52,7 +52,7 @@
     {% for comment in comments %}
     <p  class="cl">
         On {{comment.created_on.date }}&nbsp;
-        <b>{{ comment.author }}</b> ,wrote:
+        <b>{{ user.username}}</b> ,wrote:           
 
     </p>
     <p style="background-color: whitesmoke" >{{ comment.body }}</p>
