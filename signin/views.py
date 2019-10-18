@@ -69,20 +69,59 @@ def edit(request):
     
     
     
+    # if request.method == 'POST':
+        
+    #     form = Editprofile(request.POST,instance=request.user)
+    #     form1=UserProfileForm(request.POST,instance=request.user)
+    #     if form.is_valid()  and form1.is_valid():
+    #         form1.save()
+    #         form.save()
+    #         print("valid")
+    #         return redirect('index')
+    # else:
+      
+    #     form = Editprofile(instance=request.user)
+    #     form1 = UserProfileForm(instance=request.user)
+    # return render(request, 'edit.html', {
+    #     'form': form,'form1':form1
+    # })
+
+
     if request.method == 'POST':
+        form=Editprofile(request.POST)
+        profile_form=UserProfileForm(request.POST)
         
-        form = Editprofile(request.POST,instance=request.user)
-        if form.is_valid():
- 
-            form.save()
-            print("valid")
+
+        try:
+            uname = request.POST['username']
+            fname = request.POST['first_name']
+            lname = request.POST['last_name']
+            email = request.POST['email']
+            flat = request.POST['flat_number']
+            mob = request.POST['mobile_number']
+            user = User.objects.get(username=request.user)
+            profile = UserProfile.objects.get(user=user)
+            user.username = uname
+            user.first_name = fname
+            user.last_name = lname
+            user.email = email
+            user.save()
+            profile.flat_number = flat
+            profile.mobile_number = mob
+            
+            profile.save()
+            
             return redirect('index')
+        except:
+            return render(request,'edit.html',{'form':form,'form1':profile_form,})
     else:
-        
-        form = Editprofile(instance=request.user)
-    return render(request, 'edit.html', {
-        'form': form
-    })
+        user = User.objects.get(username=request.user)
+        form = Editprofile(instance=user)
+        profile = UserProfile.objects.get(user=user)
+        profile_form = UserProfileForm(instance=profile)
+        return render(request, 'edit.html', {
+                'form': form, 'form1': profile_form,
+            })
 
 
 

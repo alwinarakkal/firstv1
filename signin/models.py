@@ -6,6 +6,6 @@ class UserProfile(models.Model):
         user = models.OneToOneField(User, on_delete=models.CASCADE)
         flat_number = models.CharField(max_length=30)
         mobile_number = models.CharField(max_length=30)
-        
+        # cover=models.ImageField(upload_to='images/')
         def __str__(self):
             return self.user.username

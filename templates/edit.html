@@ -11,36 +11,34 @@
 <div class="row">
   <div class="col-md-3"></div>
   <div class="col-md-6">
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-       <div class="form-group cl" >
-        first name:{% render_field form.first_name  type="text" class="form-control" placeholder="first name"%}
+       <div class="form-group cl pl" >
+        first name:{% render_field form.first_name  type="text" class="form-control" placeholder="first name" required="" %}
       </div>
-      <div class="form-group cl">
-         last name:{% render_field form.last_name  type="text" class="form-control" placeholder="last name"%}
+      <div class="form-group cl pl">
+         last name:{% render_field form.last_name  type="text" class="form-control" placeholder="last name" required="" %}
       </div>
-       <div class="form-group cl" >
-       username: {% render_field form.username  type="text" class="form-control" placeholder="username"%}
+       <div class="form-group cl pl" >
+       username: {% render_field form.username  type="text" class="form-control" placeholder="username" required="" %}
     </div>
 
-    <div class="form-group cl">
-      email:{% render_field form.email  type="text" class="form-control" placeholder="email"%}
+    <div class="form-group cl pl">
+      email:{% render_field form.email  type="email" class="form-control" placeholder="email" required="" %}
   </div>
-  <div class="form-group cl"style="  visibility: hidden;">
-    {% render_field form.date_joined  type="text" class="form-control" placeholder="username"%}
-</div> 
-
-    
+  <div class="form-group cl pl" >
+      flat number:{% render_field form1.flat_number  type="text" class="form-control" placeholder="flat number" required="" %}
+  </div>
 
 
-          
+  <div class="form-group cl pl">
+      mobile number:{% render_field form1.mobile_number  type="number" class="form-control" placeholder="mobile number" required="" %}
+  </div>
+
     <div class="form-group">
         <input type="submit" value="Submit" class="btn button">
       </div> 
-       <!-- {{form.as_p}}
-      <div class="form-group">
-        <input type="submit" value="Submit" class="btn btn-primary py-3 px-5">
-      </div>  -->
+      
 </form>
 </div>
  <div class="col-md-3" ></div>
@@ -51,6 +49,7 @@
             {% for field in form %}
                 {% if field.errors %}<li><center><br>{{ field.label }}: {{ field.errors|striptags }}<center></li>{% endif %}
             {% endfor %}
+
         </ul>
 
 </body>
