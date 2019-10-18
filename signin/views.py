@@ -39,7 +39,7 @@ def index(request):
 def register(request):
     if request.method == 'POST':
         form = ExtendedUserCreationForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm(request.POST,request.FILES or None)
 
         if form.is_valid() and profile_form.is_valid():
             user = form.save()
@@ -88,7 +88,7 @@ def edit(request):
 
 
     if request.method == 'POST':
-        form=Editprofile(request.POST,)
+        form=Editprofile(request.POST)
         profile_form=UserProfileForm(request.POST)
         
 
@@ -99,7 +99,7 @@ def edit(request):
             email = request.POST['email']
             flat = request.POST['flat_number']
             mob = request.POST['mobile_number']
-            # pic = request.POST['pro_pic']
+                                ####
             user = User.objects.get(username=request.user)
             profile = UserProfile.objects.get(user=user)
             user.username = uname
@@ -109,7 +109,7 @@ def edit(request):
             user.save()
             profile.flat_number = flat
             profile.mobile_number = mob
-            # profile.pro_pic=pic
+            
             
             profile.save()
             
