@@ -15,8 +15,58 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
+<style type="text/css">
+		span {cursor:pointer; }
+		.number{
+			margin:100px;
+		}
+		.minus, .plus{
+			width:30px;
+			height:30px;
+			background:#f2f2f2;
+			border-radius:4px;
+			padding:8px 5px 8px 5px;
+			border:1px solid #ddd;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      color:black;
+		}
+		input{
+			height:34px;
+      width: 100px;
+      text-align: center;
+      font-size: 26px;
+			border:5px solid #ddd;
+			border-radius:4px;
+      display: inline-block;
+      vertical-align: middle;
+		}	
+</style>
 <body>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 0 ? 0 : count;
+				$input.val(count);
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				return false;
+			});
+		});	
+
+	</script>
 
 
 <div class="jumbotron" style="background-color:#a3c2c2">
@@ -39,21 +89,21 @@
 <hr />
 	</div>
 	<div class="row" >
-		<div class="col-sm-2 col-lg-2 pl " >
+		<div class="col-sm-2 col-md-2 col-lg-2 pl " >
 		
 				<img class="img-fluid hs" src="{% static 'images/milk.png' %}"  > 
-			
+				
 
 		</div>
-		<div class="col-sm-2  col-lg-2 pl " >
+		<div class="col-sm-2 col-md-2  col-lg-2 pl " >
 					<img class="img-fluid" src="{% static 'images/bread.png' %}" > 
 
 		</div>
-		<div class="col-sm-2 col-lg-2 pl" >
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
 
 					<img class="img-fluid" src="{% static 'images/water.png' %}" > 
 		</div>
-		<div class="col-sm-2 col-lg-2 pl" >
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
 
 				<img class="img-fluid" src="{% static 'images/rice.png' %}" > 
 		</div>
@@ -61,23 +111,41 @@
 	<div class="row hs">
 	</div>
 	<div class="row hs">
-		<div class="col-sm-2  col-lg-2 pl" >
-				milk: {{form.milk}}
-
+		<div class="col-sm-2 col-md-2 pl col-lg-2 pl" >
+				
+				<div class="number">
+					<span class="minus">-</span>
+					<input  name="milk" value="0"/>
+					<span class="plus" >+</span>
+				</div>
 		</div>
-		<div class="col-sm-2 col-lg-2 pl" >
-					bread: {{form.bread}}
-
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
+					
+				<div class="number">
+					<span class="minus">-</span>
+					<input  name="bread" value="0"/>
+					<span class="plus">+</span>
+				</div>
 		</div>
-		<div class="col-sm-2 col-lg-2 pl" >
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
 
-					water: {{form.water}}
+					
+					<div class="number">
+						<span class="minus">-</span>
+						<input  name="water" value="0"/>
+						<span class="plus">+</span>
+					</div>
 		</div>
-		<div class="col-sm-2  col-lg-2 pl" >
+		<div class="col-sm-2 col-md-2  col-lg-2 pl" >
 
-				rice: {{form.rice}}
+				
+					<div class="number">
+						<span class="minus">-</span>
+						<input  name="rice" value="0"/>
+						<span class="plus">+</span>
+					</div>
 		</div>
-	</div>
+</div>
 
 </div>
 	<div class="row hs" style="float:right">
