@@ -41,6 +41,7 @@ def blog_detail(request, pk):
                 post=post
             )
             comment.save()
+            return redirect('/h')
 
     comments = Comment.objects.filter(post=post)
     aut=request.user.username
@@ -89,3 +90,5 @@ class post_delete(DeleteView):
     model = Article
     template_name = 'board_element_confirm_delete.html'
     success_url = '/h'
+
+

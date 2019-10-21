@@ -39,7 +39,7 @@ def index(request):
 def register(request):
     if request.method == 'POST':
         form = ExtendedUserCreationForm(request.POST)
-        profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm(request.POST,request.FILES or None)
 
         if form.is_valid() and profile_form.is_valid():
             user = form.save()
@@ -69,17 +69,88 @@ def edit(request):
     
     
     
+    # if request.method == 'POST':
+        
+    #     form = Editprofile(request.POST,instance=request.user)
+    #     form1=UserProfileForm(request.POST,instance=request.user)
+    #     if form.is_valid()  and form1.is_valid():
+    #         form1.save()
+    #         form.save()
+    #         print("valid")
+    #         return redirect('index')
+    # else:
+      
+    #     form = Editprofile(instance=request.user)
+    #     form1 = UserProfileForm(instance=request.user)
+    # return render(request, 'edit.html', {
+    #     'form': form,'form1':form1
+    # })
+
+
     if request.method == 'POST':
+        form=Editprofile(request.POST)
+        profile_form=UserProfileForm(request.POST)
         
-        form = Editprofile(request.POST,instance=request.user)
-        if form.is_valid():
- 
-            form.save()
-            print("valid")
+
+        try:
+            uname = request.POST['username']
+            fname = request.POST['first_name']
+            lname = request.POST['last_name']
+            email = request.POST['email']
+            flat = request.POST['flat_number']
+            mob = request.POST['mobile_number']
+                                ####
+            user = User.objects.get(username=request.user)
+            profile = UserProfile.objects.get(user=user)
+            user.username = uname
+            user.first_name = fname
+            user.last_name = lname
+            user.email = email
+            user.save()
+            profile.flat_number = flat
+            profile.mobile_number = mob
+            
+            
+            profile.save()
+            
             return redirect('index')
+        except:
+            return render(request,'edit.html',{'form':form,'form1':profile_form,})
     else:
+        user = User.objects.get(username=request.user)
+        form = Editprofile(instance=user)
+        profile = UserProfile.objects.get(user=user)
+        profile_form = UserProfileForm(instance=profile)
+        return render(request, 'edit.html', {
+                'form': form, 'form1': profile_form,
+            })
+
+
+
+@login_required
+def profile(request):
+    if request.user.is_authenticated:
+        username = request.user.username
+        email= request.user.email
+        first_name= request.user.first_name
+
+        current_user=request.user
+        obj=UserProfile.objects.get(user=current_user)
+        flat_number=obj.flat_number
+        mobile_number=obj.mobile_number
+        pic=obj.pro_pic
+
         
-        form = Editprofile(instance=request.user)
-    return render(request, 'edit.html', {
-        'form': form
-    })
+    else:
+            username='not logged in'
+            flat_number='unknown'
+            email='unknown'
+            mobile_number='unknown'
+            first_name='unknown'
+    
+
+
+    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name, 'pic':pic }
+
+    return render(request, 'pro.html', context)
+

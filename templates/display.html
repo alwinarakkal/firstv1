@@ -13,12 +13,10 @@
  </head>
 <body>
 
-<div class="jumbotron" style="background-color:lightgray">
-	<h1><center>ORDERED ITEMS</center></h1>
-	
-
+<div class="jumbotron" style="background-color:#a3c2c2">
+	<h1><br><center>ORDERED ITEMS</center></h1>
     <hr>
-    <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
+    <h3><center><a class="btn btn-primary  pl " href="/shop" style="float:left">BACK</a></center></h3>
 </div>
 <div class="container-fluid" style="padding-left: 20px;padding-right: 20px;">
 	<div class="row pl" >
@@ -85,8 +83,8 @@
 	</div>
 
 </div>
-		<div class="pagination" >
-				<ul style="margin-left: 40%">
+		<div class="pagination"  style="position:fixed; left: 0; bottom: 5%; width: 100%;z-index:3;">>
+				<ul style="margin-left: 45%">
 					
 					{% if details.has_previous %}
 					<li style="display:inline-flex"><a href="?page={{ details.previous_page_number }}" style="color:yellow"><strong><<</strong> &nbsp &nbsp</a></li>

@@ -1,42 +1,39 @@
 {% extends "ex.html" %}
 {% block page_content %}
-<div class="jumbotron" style="background-color:lightgray">
-	<h1><center>Notices</center></h1>
-	
 
+
+<div class="jumbotron" style="background-color:#a3c2c2">
+  <h1><br><center>Notices</center></h1>
     <hr>
-    <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
+     <h3><center><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></center></h3>
     <h3><center><a class="btn btn-success  pl " href="/Ask"  style="float:right">ADD</a></center></h3>
 </div>
-<br><br>
+
+
+<br>
 <div class="row">
+   <!--  <div clas="col-md-5"></div> -->
     {% for post in posts %}
 
-
-
-
-    <div class="col-md-12">
+    <div class="col-md-12 m-l-5 ">
             <div class="blog-entry ftco-animate d-md-flex">
             
                 <div class="text text-2 pl-md-4 ">
-      <h3 class="mb-2">{{ post.title }}</h3>
-      <div class="meta-wrap">
-                        <p class="meta">
-              <span><i class="icon-calendar mr-2" aria-hidden="true"></i>{{post.created_on.date }}</span>
-              <span><i class="icon-edit mr-2" aria-hidden="true"></i>{{post.aut }}</span>
-       
-         
-                            
-          </p>
-      </div>
-      <p class="mb-4 card" style="width:50%">{{ post.body |slice:150  }}</p>
-      <p><a href="{% url 'b_detail' post.pk%}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
-    </div>
+                      <h3 class="mb-2" style="color:gray">{{ post.title }}</h3>
+                      <div class="meta-wrap">
+                              <p class="meta" style="color:white">
+                              <span><i class="icon-calendar mr-2" aria-hidden="true"></i>{{post.created_on.date }}</span>
+                              <span><i class="icon-edit mr-2" aria-hidden="true"></i>{{post.aut }}</span>        </p>
+                      </div>
+                      <p class="mb-4 card p-2" style="width:50%">{{ post.body |slice:150  }}</p>
+                      <p><a href="{% url 'b_detail' post.pk%}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a></p>
+                </div>
             </div>
 
            
-        </div>
+    </div>
     {% endfor %}
+    <!-- <div clas="col-md-5"></div> -->
 </div>
 
 
@@ -49,7 +46,7 @@
         {% endif %}
         {% for pg in posts.paginator.page_range %}
         {% if posts.number == pg %}
-<a href="?page={{ pg }}" style="color:yellow">{{ pg }}</a>
+<a href="?page={{ pg }}" style="color:yellow"><b>{{ pg }}</b></a>
     
         {% endif %}
         {% endfor %}

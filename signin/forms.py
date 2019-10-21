@@ -26,7 +26,7 @@ class ExtendedUserCreationForm(UserCreationForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ('flat_number', 'mobile_number')
+        fields = ('flat_number', 'mobile_number','pro_pic')
 
 
         
@@ -34,6 +34,6 @@ class Editprofile(UserChangeForm):
     class Meta:
        
         model = User
-        fields =('first_name','last_name','username','email','date_joined')
+        fields =('first_name','last_name','username','email')
 
 

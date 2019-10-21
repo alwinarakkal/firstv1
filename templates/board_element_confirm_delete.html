@@ -3,20 +3,30 @@
 {% block page_content %}
 
 <br />
-<h3>Are you sure you want to delete?</h3>
+<div class="flex-container ">
+<h1>&nbsp<br><br></h1>
+</div>
+<div class="row" >
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+	<div class="row p-b-5">
+<h3 style="color:lightgray">Are you sure you want to delete?</h3>
+</div>
 <form  method="POST">
 
-    <div  >
+    
 
 {% csrf_token %}
 
 
+<div class="row m-t-5">
+<button class="butto " style="display:inline" type="submit">YES</button>
 
-<button class="butto " type="submit">yes</button>
-<br>
 
-<a href="/h" class="butt pl" style="text-decoration: none">cancel</a>
-
+<a href="/h" class="butt pl" style="text-decoration: none;display:inline">CANCEL</a>
+</div></div>
 </form>
+<div class="col-md-3"></div>
+</div>
 
 {% endblock %}
