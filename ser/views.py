@@ -91,52 +91,41 @@ def shopmail(request):
     
     # obj2=Post.objects.filter(aut=current_user).order_by('created')[:1]
     obj2=Item.objects.last()
+    if(obj2.bread):
 
-    sel1=obj2.bread
-    if sel1 =='a':
-        b= "Bread 1 packet ,"+"\n"
-    elif sel1=='f':
-        b="Bread 2 packet ,"+"\n"
-    elif sel1=='g':
-        b="Bread 3 packet ,"+"\n"
+        sel1=str(obj2.bread)
+       
+        b= sel1+ " PACKET BREAD "+"\n"
     else:
-         b=""
-    sel2=obj2.water
-    if sel2=='b':
-        w= "1 CAN-WATER  ,"+"\n"
-    elif sel2=='h':
-        w="2 CAN-WATER ,"+"\n"
-    elif sel2=='i':
-        w="3 CAN-WATER,"+"\n"
-    else :
+        b=""
+    if(obj2.water):
+        sel2=str(obj2.water)
+       
+        w=sel2+ " CAN WATER ,"+"\n"
+    else:
         w=""
     
-    sel3=obj2.milk
-    if sel3 == 'd':
-        m= "milk 2 packet  "+"\n"
-    elif sel3=='c':
-        m="milk 1 packet"+"\n"
-    elif sel3=='e':
-        m="milk 3 packet"+"\n"
-    else :
-        m=""
+    if(obj2.milk):
 
-    sel4=obj2.rice
-    if sel4 == 'j':
-        r= "Rice 1 kg  "+"\n"
-    elif sel4=='k':
-        r="Rice 3 kg "+"\n"
-    elif sel4=='l':
-        r="Rice 5 kg "+"\n"
-    elif sel4=='z':
-        r="Rice 10 kg "+"\n"
-    else :
+        sel3=str(obj2.milk)
+        
+        m=sel3+  " PACKET MILK "+"\n"
+       
+    else:
+        m=""
+    if(obj2.rice):
+
+        sel4=str(obj2.rice)
+        
+        r=sel4+" kg RICE "+"\n"
+       
+    else:
         r=""
     
-    z="flat number :"+x+"\n"+"mobile number :"+y+"\n"
+    z="FLAT NUMBER :"+x+"\n"+"MOBILE NUMBER :"+y+"\n"
     
     
-    shoppinglist=(z+"Item List :"+"\n"+b+w+m+r)
+    shoppinglist=(z+" ITEM LIST :"+"\n"+b+w+m+r)
     
     context = {
         'details':shoppinglist
