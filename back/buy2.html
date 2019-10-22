@@ -1,0 +1,158 @@
+{% extends 'shopping.html' %}
+{% load static %}
+
+{% block page_content %}
+
+
+{% load widget_tweaks %}
+
+
+<head>
+  <title>shop</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<style type="text/css">
+		span {cursor:pointer; }
+		
+		.minus, .plus{
+			width:30px;
+			height:38px;
+			background:#1ad0f7;
+			border-radius:4px;
+			padding:8px 5px 8px 5px;
+			border:1px solid #262323;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      color:black;
+		}
+		input{
+			height:34px;
+      width: 100px;
+      text-align: center;
+      font-size: 26px;
+			border:5px solid #2f2626;
+			border-radius:4px;
+      display: inline-block;
+      vertical-align: middle;
+		}	
+</style>
+<body>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 0 ? 0 : count;
+				$input.val(count);
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				return false;
+			});
+		});	
+
+	</script>
+
+
+<div class="jumbotron" style="background-color:#a3c2c2">
+	<h1><br><center>SHOPPING LIST</center></h1>
+    <hr>
+    <h3><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></h3>
+    <h3><a href="/list">
+  		<img src="{% static 'images/pic.png' %}" alt="cart items" style="width:60px;height:60px;float:right; ">
+</a></h3>
+</div>
+
+<div class="container-fluid" style="padding-left: 20px;padding-right: 20px;">
+	<div class="row ">
+		
+		<form class="form-signin" method="POST" >
+                 {% csrf_token %}
+                <div class="form-group"  style="  visibility: hidden;">
+                  {% render_field form.aut  type="text" class="form-control" placeholder="Title"%}
+              	</div>
+<hr />
+	</div>
+	<div class="row" >
+		<div class="col-sm-2 col-md-2 col-lg-2 pl " >
+		
+				<img class="img-fluid hs" src="{% static 'images/milk.png' %}"  > 
+				
+
+		</div>
+		<div class="col-sm-2 col-md-2  col-lg-2 pl " >
+					<img class="img-fluid" src="{% static 'images/bread.png' %}" > 
+
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
+
+					<img class="img-fluid" src="{% static 'images/water.png' %}" > 
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
+
+				<img class="img-fluid" src="{% static 'images/rice.png' %}" > 
+		</div>
+	</div>
+	<div class="row hs">
+	</div>
+	<div class="row hs">
+		<div class="col-sm-2 col-md-2 pl col-lg-2 pl" >
+				
+				
+					<span class="minus">-</span>
+					<input  name="milk" value="0"/>
+					<span class="plus" >+</span>
+				
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
+			
+					<span class="minus">-</span>
+					<input  name="bread" value="0"/>
+					<span class="plus">+</span>
+				
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
+
+					
+					
+						<span class="minus">-</span>
+						<input  name="water" value="0"/>
+						<span class="plus">+</span>
+					
+		</div>
+		<div class="col-sm-2 col-md-2  col-lg-2 pl" >
+
+				
+					
+						<span class="minus">-</span>
+						<input  name="rice" value="0"/>
+						<span class="plus">+</span>
+					
+		</div>
+</div>
+
+</div>
+	<div class="row hs" style="float:right">
+		<br><br><hr>
+
+	<input type="submit" value="Submit" class="button" >
+	</div>
+
+
+
+</form>
+</body>
+{% endblock %}

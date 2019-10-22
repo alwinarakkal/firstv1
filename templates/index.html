@@ -1,155 +1,96 @@
-{% extends 'index2.html' %}
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
+
 {% block page_content %}
 
-<title>home</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-<body class="w3-black">
+{% load widget_tweaks %}
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
- 
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
-    <p></p>
-  </a>
- 
-  
-  
-  {% if user.is_authenticated %}
-  <a href="#my" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>{{user.username}}</p>
-  </a>
-  
-  <a href="/shop"  class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-cart-plus w3-xxlarge"></i>
-    <p>SHOPPING</p>
-  </a>
-  <a href="/req" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-male w3-xxlarge"></i>
-    <p>SERVICES</p>
-  </a>
-   <a href="/h" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="  fas fa-bullhorn w3-xxlarge"></i>
-    <p>NOTICES</p>
-  </a>
+<!DOCTYPE html>
+<html lang="en">
 
-  <a href="{% url 'password_change' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-refresh w3-xxlarge"></i>
-    <p>CHANGE PASSWORD</p>
-  </a>
-  <!-- <a href="{% url 'logout' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-remove w3-xxlarge"></i>
-    <p>LOGOUT</p>
-  </a> -->
-  {% else %}
-  <a href="/register" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-eye w3-xxlarge"></i>
-    <p>SIGNUP</p>
-  </a>
-  <a href="{% url 'login' %}" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>SIGNIN</p>
-  </a>
-   {% endif %}
-</nav>
+	<title>home</title>
+	<meta charset="UTF-8">
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important"></a>
-  
-    <a href="/register" class="w3-bar-item w3-button" style="width:25% !important">SIGNUP</a>
-    <a href="{% url 'login' %}" class="w3-bar-item w3-button" style="width:25% !important">SIGNIN</a>
-    {% if user.is_authenticated %}
-      <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">{{user.username}}</a>
-    <a href="/register" class="w3-bar-item w3-button" style="width:25% !important">SHOP</a>
-    <a href="/req" class="w3-bar-item w3-button" style="width:25% !important">SERVICES</a>
-    <a href="/h" class="  fas fa-bullhorn w3-button" style="width:25% !important">NOTICES</a>
-    <a href="{% url 'password_change' %}"  class="w3-bar-item w3-button" style="width:25% !important">CHANGE PASSWORD</a>
-   <!--  <a href="{% url 'logout' %}" class="w3-bar-item w3-button" style="width:25% !important">SIGNOUT</a> -->
-    {% endif %}
+	<div class="sec-banner bg0 p-t-130 p-b-50 ">
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 --><span class="block1-name ltext-102 trans-04 p-b-8">
+									Shop Now
+								</span>
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'images/gro.png' %}" alt="IMG-BANNER">
 
-  </div>
-</div>
+						<a href="/shop" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+							
+							</div>
 
-<!-- Page Content -->
-<div class="w3-padding-large" id="main">
-  <!-- Header/Home -->
-  <!-- <header class="w3-container w3-padding-32 w3-center w3-black" id="home"> -->
-    <h1 class="w3-jumbo w3-container w3-padding-32 w3-center w3-black" id="home"><span class="w3-hide-small"> <br><br>SMART APP</span> </h1>
-    <p></p>
-    
- <!--  </header> -->
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Shop Now
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
 
-  <!-- About Section -->
-  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
-    <h2 class="w3-text-light-grey">About Us</h2>
-    <hr style="width:200px" class="w3-opacity">
-    <p>Smart App is building technology to simplify check-ins everywhere — at the main gate of a housing society, the reception area of a start-up, even the entrance of a mall. Our flagship solution currently facilitates over 1 million check-in requests every day at thousands of gated premises and continues to show rapid growth.
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 --><span class="block1-name ltext-102 trans-04 p-b-8">
+									Need Services?
+								</span>
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'images/serv.png' %}" alt="IMG-BANNER">
 
-      We’re also working on/launched products to benefit the occupants, management and other stakeholders of the gated premises we work with, such as an ERP tool and a system for eCommerce players to better manage their deliveries.
-    </p>
-   
-    <!-- Grid for pricing tables -->
-    {%if user.is_authenticated%}
+						<a href="/req" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									Services at your fingertips
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-6 col-xl-4 p-b-30 m-lr-auto">
+					<!-- Block1 --><span class="block1-name ltext-102 trans-04 p-b-8">
+									Notices
+								</span>
+					<div class="block1 wrap-pic-w">
+						<img src="{% static 'images/noti.png' %}" alt="IMG-BANNER" >
+
+						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+							<div class="block1-txt-child1 flex-col-l">
+								
+							</div>
+
+							<div class="block1-txt-child2 p-b-4 trans-05">
+								<div class="block1-link stext-101 cl0 trans-09">
+									View Now
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
-	
-    <h3 class="w3-padding-16 w3-text-light-grey" id="my" >My Profile</h3>
-    <div class="w3-row-padding"  style="margin:0 -16px">
-      <div class="w3-half w3-margin-bottom">
-        <a href="/update">
-               <img src="{% static 'images/edi.png' %}" alt="edit profile" style="width:50px;height:50px;">
-            </a>
-        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
-          <li class="w3-dark-grey w3-xlarge w3-padding-32">Hi {{first_name}}</li>
-          <li class="w3-padding-16"><strong>USER NAME </strong>: {{username}}</li>
-          <li class="w3-padding-16"><strong>FLAT NUMBER </strong>: {{flat_number}}</li>
-          <li class="w3-padding-16"><strong>MOBILE NUMBER</strong> : {{mobile_number}}</li>
-          <li class="w3-padding-16"><strong>EMAIL</strong> : {{email}}</li>
-        </ul>
-      </div>
-      	{% endif %} 
 
-     
-    </div>
-    
-      <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
-    <h2 class="w3-text-light-grey">Contact Me</h2>
-    <hr style="width:200px" class="w3-opacity">
 
-    <div class="w3-section">
-      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Kochi</p>
-      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 9633834344</p>
-      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: alwin.sayone@mail.com</p>
-    </div><br>
-    <p>Lets get in touch. Send me a message:</p>
 
-  </div>
 
-</div>
 
-</body>
 </html>
+
+
+
 {% endblock %}

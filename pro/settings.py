@@ -49,7 +49,7 @@ ROOT_URLCONF = 'pro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': ['templates','templates1'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,3 +130,4 @@ EMAIL_HOST_PASSWORD = 'pqfbxrgxjgomjtyz'
 
 
 
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")

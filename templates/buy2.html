@@ -1,21 +1,15 @@
-{% extends 'shopping.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block page_content %}
 
 
 {% load widget_tweaks %}
-
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <title>shop</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<title>Shoping Cart</title>
+	<meta charset="UTF-8">
 </head>
 
 <style type="text/css">
@@ -24,7 +18,7 @@
 		.minus, .plus{
 			width:30px;
 			height:38px;
-			background:#1ad0f7;
+			background: #8080ff;
 			border-radius:4px;
 			padding:8px 5px 8px 5px;
 			border:1px solid #262323;
@@ -34,8 +28,8 @@
       color:black;
 		}
 		input{
-			height:34px;
-      width: 100px;
+			height:40px;
+      width: 80px;
       text-align: center;
       font-size: 26px;
 			border:5px solid #2f2626;
@@ -44,9 +38,9 @@
       vertical-align: middle;
 		}	
 </style>
-<body>
-
-		<script type="text/javascript">
+		
+	<body>
+				<script type="text/javascript">
 			$(document).ready(function() {
 			$('.minus').click(function () {
 				var $input = $(this).parent().find('input');
@@ -67,92 +61,116 @@
 	</script>
 
 
-<div class="jumbotron" style="background-color:#a3c2c2">
-	<h1><br><center>SHOPPING LIST</center></h1>
-    <hr>
-    <h3><a class="btn btn-primary  pl " href="/index" style="float:left">HOME</a></h3>
-    <h3><a href="/list">
-  		<img src="{% static 'images/pic.png' %}" alt="cart items" style="width:60px;height:60px;float:right; ">
-</a></h3>
-</div>
-
-<div class="container-fluid" style="padding-left: 20px;padding-right: 20px;">
-	<div class="row ">
-		
-		<form class="form-signin" method="POST" >
-                 {% csrf_token %}
+	<form class="bg0 p-t-80 p-b-85" method="POST">
+		 {% csrf_token %}
                 <div class="form-group"  style="  visibility: hidden;">
                   {% render_field form.aut  type="text" class="form-control" placeholder="Title"%}
               	</div>
-<hr />
-	</div>
-	<div class="row" >
-		<div class="col-sm-2 col-md-2 col-lg-2 pl " >
-		
-				<img class="img-fluid hs" src="{% static 'images/milk.png' %}"  > 
-				
+		<div class="container" >
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart">
+							<table class="table-shopping-cart">
+								<tr class="table_head">
+									<th class="column-1">Product</th>
+									<th class="column-2"></th>
+									<th class="column-3">Price</th>
+									<th class="column-4">Quantity</th>
+									<!-- <th class="column-5">Total</th> -->
+								</tr>
 
-		</div>
-		<div class="col-sm-2 col-md-2  col-lg-2 pl " >
-					<img class="img-fluid" src="{% static 'images/bread.png' %}" > 
-
-		</div>
-		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
-
-					<img class="img-fluid" src="{% static 'images/water.png' %}" > 
-		</div>
-		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
-
-				<img class="img-fluid" src="{% static 'images/rice.png' %}" > 
-		</div>
-	</div>
-	<div class="row hs">
-	</div>
-	<div class="row hs">
-		<div class="col-sm-2 col-md-2 pl col-lg-2 pl" >
-				
-				
-					<span class="minus">-</span>
-					<input  name="milk" value="0"/>
-					<span class="plus" >+</span>
-				
-		</div>
-		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
-			
-					<span class="minus">-</span>
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="{% static 'images/bread.png' %}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">Fresh Bread</td>
+									<td class="column-3">Rs.35</td>
+									<td class="column-4">
+									
+											<span class="minus">-</span>
 					<input  name="bread" value="0"/>
 					<span class="plus">+</span>
+										<!-- </div> -->
+									</td>
+									<!-- <td class="column-5">$ 36.00</td> -->
+								</tr>
+
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="{% static 'images/milk.png' %}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">Milk</td>
+									<td class="column-3">Rs.22</td>
+									<td class="column-4">
+										<span class="minus">-</span>
+										<input  name="milk" value="0"/>
+										<span class="plus" >+</span>
+									</td>
+									<!-- <td class="column-5">$ 16.00</td> -->
+								</tr>
+
+
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="{% static 'images/rice.png' %}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">Rice</td>
+									<td class="column-3">Rs.40</td>
+									<td class="column-4">
+										<span class="minus">-</span>
+										<input  name="rice" value="0"/>
+										<span class="plus" >+</span>
+									</td>
+									<!-- <td class="column-5">$ 16.00</td> -->
+								</tr>
+
+
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="{% static 'images/water.png' %}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">Water Can</td>
+									<td class="column-3">RS. 50</td>
+									<td class="column-4">
+										<span class="minus">-</span>
+										<input  name="water" value="0"/>
+										<span class="plus" >+</span>
+									</td>
+									<!-- <td class="column-5">$ 16.00</td> -->
+								</tr>
+							</table>
+						</div>
+
+
+							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"  type="submit" value="Submit">
+							Place Order
+						</button>
+						</div>
+					</div>
+				</div>
+
 				
+			</div>
 		</div>
-		<div class="col-sm-2 col-md-2 col-lg-2 pl" >
-
-					
-					
-						<span class="minus">-</span>
-						<input  name="water" value="0"/>
-						<span class="plus">+</span>
-					
-		</div>
-		<div class="col-sm-2 col-md-2  col-lg-2 pl" >
-
-				
-					
-						<span class="minus">-</span>
-						<input  name="rice" value="0"/>
-						<span class="plus">+</span>
-					
-		</div>
-</div>
-
-</div>
-	<div class="row hs" style="float:right">
-		<br><br><hr>
-
-	<input type="submit" value="Submit" class="button" >
-	</div>
+	</form>
+		
+	
+		
 
 
 
-</form>
 </body>
+</html>
+
+
+
 {% endblock %}
