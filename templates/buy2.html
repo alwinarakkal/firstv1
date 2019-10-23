@@ -93,7 +93,7 @@
 											<span class="minus">-</span>
 					<input  name="bread" value="0"/>
 					
-					<span class="plus">+</span>
+					<span class="plus" onclick="document.getElementById('b').style.visibility='visible'">+</span>
 										<!-- </div> -->
 									</td>
 									<!-- <td class="column-5">$ 36.00</td> -->
@@ -108,9 +108,9 @@
 									<td class="column-2">Milk</td>
 									<td class="column-3">Rs.22</td>
 									<td class="column-4">
-										<span class="minus">-</span>
+										<span class="minus" >-</span>
 										<input  name="milk" value="0"/>
-										<span class="plus" >+</span>
+										<span class="plus" onclick="document.getElementById('b').style.visibility='visible'">+</span>
 									</td>
 									<!-- <td class="column-5">$ 16.00</td> -->
 								</tr>
@@ -127,7 +127,7 @@
 									<td class="column-4">
 										<span class="minus">-</span>
 										<input  name="rice" value="0"/>
-										<span class="plus" >+</span>
+										<span class="plus" onclick="document.getElementById('b').style.visibility='visible'">+</span>
 									</td>
 									<!-- <td class="column-5">$ 16.00</td> -->
 								</tr>
@@ -144,7 +144,7 @@
 									<td class="column-4">
 										<span class="minus">-</span>
 										<input  name="water" value="0"/>
-										<span class="plus" >+</span>
+										<span class="plus" onclick="document.getElementById('b').style.visibility='visible'">+</span>
 									</td>
 									<!-- <td class="column-5">$ 16.00</td> -->
 								</tr>
@@ -152,7 +152,7 @@
 						</div>
 
 
-							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"  type="submit" value="Submit">
+							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"  type="submit" value="Submit" style="visibility:hidden" id="b">
 							Place Order
 						</button>
 						</div>
