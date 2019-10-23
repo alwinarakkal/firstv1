@@ -90,7 +90,7 @@
 			<!-- Topbar -->
 			<div class="top-bar">
 				<div class="content-topbar flex-sb-m h-full container">
-					<div class="left-top-bar">
+					<div class="left-top-bar" style="font-family: Kaushan Script;color:  #9999ff;">
 						<b>SMART APP</b>
 					</div>
 
@@ -132,7 +132,8 @@
 					
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<!-- <li class="active-menu"> -->
+								<li>
 								<a href="/index">Home</a>
 							
 							</li>
@@ -147,7 +148,7 @@
 							</li>
 
 							<li>
-								<a href="blog.html">Notices</a>
+								<a href="/h">Notices</a>
 							</li>
 
 							
@@ -262,7 +263,7 @@
 				</li>
 
 				<li>
-					<a href="blog.html">Notices</a>
+					<a href="/h">Notices</a>
 				</li>
 
 			
@@ -273,39 +274,10 @@
 		
 	</header>
 
-	<!-- Cart -->
-	<!-- <div class="wrap-header-cart js-panel-cart">
-		<div class="s-full js-hide-cart"></div>
-
-		<div class="header-cart flex-col-l p-l-65 p-r-25">
-			<div class="header-cart-title flex-w flex-sb-m p-b-8">
-				<span class="mtext-103 cl2">
-					Your Cart
-				</span>
-
-				<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-					<i class="zmdi zmdi-close"></i>
-				</div>
-			</div>
-			
-		</div>
-	</div>
-
-		 -->
-
-
-
-
-
-
-
-
-
-
 
 
 	<!-- Back to top -->
-	<div class="btn-back-to-top" id="myBtn">
+	<div class="btn-back-to-top" id="myBtn" style="margin-bottom: 2% ">
 		<span class="symbol-btn-back-to-top">
 			<i class="zmdi zmdi-chevron-up"></i>
 		</span>
@@ -320,14 +292,7 @@
 	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
-<!-- 	<script>
-		$(".js-select2").each(function(){
-			$(this).select2({
-				minimumResultsForSearch: 20,
-				dropdownParent: $(this).next('.dropDownSelect2')
-			});
-		})
-	</script> -->
+
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
 	<script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
@@ -357,42 +322,7 @@
 	<script src="{% static 'vendor/isotope/isotope.pkgd.min.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/sweetalert/sweetalert.min.js' %}"></script>
-	<!-- <script>
-		$('.js-addwish-b2').on('click', function(e){
-			e.preventDefault();
-		});
 
-		$('.js-addwish-b2').each(function(){
-			var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-b2');
-				$(this).off('click');
-			});
-		});
-
-		$('.js-addwish-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
-
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to wishlist !", "success");
-
-				$(this).addClass('js-addedwish-detail');
-				$(this).off('click');
-			});
-		});
-
-		/*---------------------------------------------*/
-
-		$('.js-addcart-detail').each(function(){
-			var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
-			$(this).on('click', function(){
-				swal(nameProduct, "is added to cart !", "success");
-			});
-		});
-	
-	</script> -->
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
 	<script>
