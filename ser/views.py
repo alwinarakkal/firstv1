@@ -60,12 +60,12 @@ def serv_mail(request):
     mobile_number=obj.mobile_number
     y=str(mobile_number)
     
-    # obj2=Post.objects.filter(aut=current_user).order_by('created')[:1]
+    
     obj2=Post.objects.last()
     msg=obj2.body
     p=str(msg)
 
-    mg=obj2.flat_number
+    mg=obj2.time
     s=str(mg)
     
     z="flat number :"+x+"\n"+"mobile number  :"+y+"\n"+"problem: "+p+"\n"+"Time: "+s
