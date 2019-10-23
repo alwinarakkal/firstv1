@@ -37,7 +37,10 @@ def shop(request):                                              #neww
     aut=request.user.username
     if request.method == "POST":
         form = buy(request.POST,initial={'aut':aut})
+        
+       
         if form.is_valid():
+            
             form.save()
             return redirect('gmail')
 
@@ -174,7 +177,10 @@ def MyView(request):                #display ordered items
 
     query_results = Item.objects.all().order_by('-created')
     aut=request.user.username
-                                                        #pagination
+
+   
+   
+   
     paginator=Paginator(query_results,5)
     try:
         page = int(request.GET.get('page','1'))

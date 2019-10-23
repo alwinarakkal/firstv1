@@ -33,8 +33,12 @@
 					
 					{% if  user.username == x.aut %}
 					{% if x.bread or x.water or x.milk or x.rice %}
+
 					<tr>
 					<td style="color:black">ORDERED ITEMS :</td>
+					{% if x.get_total %}
+				<td> <b>Total :</b> Rs.{{ x.get_total }}</td>
+
 					{% if x.bread %}
 					<td>{{x.bread}} PACKET BREAD,</td>	
 					{% endif %}
@@ -58,7 +62,8 @@
 					{% endif %}	
 					{% endif %}	
 					<br>
-				
+					
+				{% endif %}
 		{% endfor %}
 		 </tr>
 </tbody>

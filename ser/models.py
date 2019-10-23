@@ -28,5 +28,12 @@ class Item(models.Model):
     created = models.DateTimeField(auto_now_add=True,null=True)
     def __str__(self):
         return self.aut
+    def get_total(self):
+        total = 0
+        total = total+self.bread*35
+        total = total+self.water*50
+        total = total+self.milk*22
+        total = total+self.rice*40
+        return total
 
 
