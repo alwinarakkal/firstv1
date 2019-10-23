@@ -113,7 +113,7 @@ def edit(request):
             
             profile.save()
             
-            return redirect('index')
+            return redirect('/profile')
         except:
             return render(request,'edit.html',{'form':form,'form1':profile_form,})
     else:
