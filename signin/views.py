@@ -133,6 +133,7 @@ def profile(request):
         username = request.user.username
         email= request.user.email
         first_name= request.user.first_name
+        last_name= request.user.last_name
 
         current_user=request.user
         obj=UserProfile.objects.get(user=current_user)
@@ -147,10 +148,11 @@ def profile(request):
             email='unknown'
             mobile_number='unknown'
             first_name='unknown'
+            last_name='unknown'
     
 
 
-    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name, 'pic':pic }
+    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name,'last_name': last_name, 'pic':pic }
 
     return render(request, 'pro.html', context)
 
