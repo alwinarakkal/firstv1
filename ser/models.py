@@ -6,7 +6,7 @@ class Post(models.Model):
     aut = models.CharField(max_length=255 )
 
 
-    # flat_number = models.CharField(max_length=255 )   #neww2222
+   
     time = models.CharField(max_length=255 )
 
     body = models.TextField()

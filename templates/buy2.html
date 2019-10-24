@@ -58,14 +58,20 @@
 			});
 		});	
 
+
+
 	</script>
 
 
-	<form class="bg0 p-t-80 p-b-85" method="POST">
+
+	<form class="bg0 p-t-80 p-b-85" method="POST" >
 		 {% csrf_token %}
                 <div class="form-group"  style="  visibility: hidden;">
                   {% render_field form.aut  type="text" class="form-control" placeholder="Title"%}
               	</div>
+              	
+
+             
 		<div class="container" >
 			<div class="row">
 				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">

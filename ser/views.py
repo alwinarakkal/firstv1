@@ -2,9 +2,9 @@ from django.shortcuts import render,redirect
 from signin.models import UserProfile                   #neww222
 from signin.forms import ExtendedUserCreationForm, UserProfileForm #neww222
 from .models import Post,Item
-
+from django.db.models import Q
 # Create your views here.
-
+from django.views.generic import ListView, DetailView, View
 from .forms import ser_req
 from .forms import buy
 from django.core.paginator import Paginator
@@ -198,3 +198,28 @@ def MyView(request):                #display ordered items
     return render(request, 'display.html',context)
 
 
+
+@login_required
+def residents(request): 
+    tenants=UserProfile.objects.all()
+    info=[]
+    for x in tenants:
+        y={'flnum':x.flat_number}
+        info.append(y)
+    print(info)
+    context={
+            'info':info
+        }    
+    return render(request,'residents.html',context)
+
+
+
+class CategoryListView(ListView):
+    model = UserProfile
+    template_name = 'residents_info.html'
+
+    def get_queryset(self):
+
+        category = self.kwargs.get('category')
+    
+        return UserProfile.objects.filter(flat_number=category)

@@ -13,5 +13,8 @@ urlpatterns = [
     path('gmail/',views.shopmail,name="gmail"),
     path('',include('signin.urls')),
     path('',include('blog.urls')),
+    path('residents/',views.residents,name="residents"),
+    path('category/<category>', views.CategoryListView.as_view(), name='category-list'),
+   
     
 ]
