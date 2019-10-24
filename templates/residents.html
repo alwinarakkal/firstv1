@@ -11,7 +11,7 @@
 <div class="row " style="margin-top: 10%">
   <div class="col-md-3"></div>
 
-<div  class="col-md-5" style="color:yellow">
+<div  class="col-md-5" style="color:black">
     <h1 class="ltext-108 cl2 hov-cl1 trans-04 p-b-10" style="text-align: center;">Residents</h1>
     
        
@@ -19,10 +19,10 @@
     </small>
     {% for y in info %}
     <div class="card p-3 m-t-15">
-    
 
 	<li class="btn">
-                        <a class="nav-link" href= "{% url 'category-list' y.flnum %}" style="font-size: 30px">{{y.flnum}}</a>
+    
+                        <a class="nav-link" href= "{% url 'category-list' y.flnum %}" style="font-size: 30px"><span class="lnr lnr-apartment">{{y.flnum}}</span></a>
                     </li>
                
 
