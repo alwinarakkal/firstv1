@@ -58,7 +58,7 @@ def register(request):
 
     else:
         form = ExtendedUserCreationForm()
-        profile_form = UserProfileForm(request.POST)
+        profile_form = UserProfileForm()
     context = {'form': form, 'profile_form': profile_form}
     return render(request, 'register.html', context)
 
