@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .models import UserProfile
 from ser.models import Item,Post                                   ######for admin login
 from django.views.generic import ListView, DetailView, View
-
+from django.core.paginator import Paginator
 from .forms import ExtendedUserCreationForm, UserProfileForm,Editprofile
 
 from django.contrib.auth.decorators import login_required
@@ -66,7 +66,17 @@ def deliver_item(request):
         for x in order_list:
             y={'flnum':x.flat_number}
             info.append(y)
-        print(info)
+                                                        #pagination
+        paginator=Paginator(info,5)
+        try:
+            page = int(request.GET.get('page','1'))
+        except:
+            page = 1
+        try:
+            info = paginator.page(page)
+        except(EmptyPage, InvalidPage):
+            info=paginator.page(paginator.num_pages)
+                                                        #/pagination     
         context={
                 'info':info
             }    
@@ -80,7 +90,16 @@ def deliver_service(request):
         for x in order_list:
             y={'flnum':x.flat_number}
             info.append(y)
-        print(info)
+        paginator=Paginator(info,5)
+        try:
+            page = int(request.GET.get('page','1'))
+        except:
+            page = 1
+        try:
+            info = paginator.page(page)
+        except(EmptyPage, InvalidPage):
+            info=paginator.page(paginator.num_pages)
+                                                        #/pagination     
         context={
                 'info':info
             }    
