@@ -90,6 +90,9 @@ class caretaker(ListView):
     model = Item
     template_name = 'received_orders.html'
 
+
+
+
     def get_queryset(self):
 
         category = self.kwargs.get('category')
@@ -109,6 +112,7 @@ class caretaker2(ListView):
         
         
         return Post.objects.filter(flat_number=category)
+
 
 
 

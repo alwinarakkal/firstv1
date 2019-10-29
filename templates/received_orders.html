@@ -33,6 +33,10 @@
 					{% if x.bread or x.water or x.milk or x.rice %}
 
 					<tr>
+						<td style="color:black">TIME:</td> 
+						<td> 
+								{{ x.created }}
+							 </td>
 					<td style="color:black">ORDERED ITEMS :</td>
 					{% if x.get_total %}
 				<td style="color:green"> <b>Total :</b> ₹ {{ x.get_total }}</td>
