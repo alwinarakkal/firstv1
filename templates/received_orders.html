@@ -17,7 +17,7 @@
     
     <!-- <h3><center><a class="btn btn-primary  pl " href="/shop" style="float:left">BACK</a></center></h3> -->
 </div>
-<div class="container-fluid" style="padding-left: 15%;padding-right: 15%;">
+<div class="container-fluid" style="padding-left: 10%;padding-right: 10%;">
 <div class="card p-3">
 
 
@@ -33,11 +33,9 @@
 					{% if x.bread or x.water or x.milk or x.rice %}
 
 					<tr>
-						<td style="color:black">TIME:</td> 
-						<td> 
-								{{ x.created }}
-							 </td>
-					<td style="color:black">ORDERED ITEMS :</td>
+						<td><b>TIME : </b>{{ x.created }}</td> 
+						
+					<td style="color:black">ORDERS :</td>
 					{% if x.get_total %}
 				<td style="color:green"> <b>Total :</b> ₹ {{ x.get_total }}</td>
 
