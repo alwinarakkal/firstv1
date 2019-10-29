@@ -2,36 +2,113 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import UserProfile
+from ser.models import Item,Post                                   ######for admin login
+from django.views.generic import ListView, DetailView, View
+
 from .forms import ExtendedUserCreationForm, UserProfileForm,Editprofile
 
 from django.contrib.auth.decorators import login_required
 
 
 def index(request):
+    if request.user.groups.filter(name__in=['keeper']).exists():
+        if request.user.is_authenticated:
+            username = request.user.username
+            email= request.user.email
+            first_name= request.user.first_name
 
-    if request.user.is_authenticated:
-        username = request.user.username
-        email= request.user.email
-        first_name= request.user.first_name
+            current_user=request.user
+            obj=UserProfile.objects.get(user=current_user)
+            flat_number=obj.flat_number
+            mobile_number=obj.mobile_number  
+        else:
+                username='not logged in'
+                flat_number='unknown'
+                email='unknown'
+                mobile_number='unknown'
+                first_name='unknown'
 
-        current_user=request.user
-        obj=UserProfile.objects.get(user=current_user)
-        flat_number=obj.flat_number
-        mobile_number=obj.mobile_number
 
-        
+        context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
+
+        return render(request, 'caretaker.html', context)
+
+
     else:
-            username='not logged in'
-            flat_number='unknown'
-            email='unknown'
-            mobile_number='unknown'
-            first_name='unknown'
+
+        if request.user.is_authenticated:
+            username = request.user.username
+            email= request.user.email
+            first_name= request.user.first_name
+
+            current_user=request.user
+            obj=UserProfile.objects.get(user=current_user)
+            flat_number=obj.flat_number
+            mobile_number=obj.mobile_number
+
+            
+        else:
+                username='not logged in'
+                flat_number='unknown'
+                email='unknown'
+                mobile_number='unknown'
+                first_name='unknown'
 
 
-    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
+        context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
 
-    return render(request, 'index.html', context)
+        return render(request, 'index.html', context)
 
+def deliver_item(request):
+
+        order_list=Item.objects.all().order_by('-created')
+        info=[]
+        for x in order_list:
+            y={'flnum':x.flat_number}
+            info.append(y)
+        print(info)
+        context={
+                'info':info
+            }    
+        return render(request,'shopkeeper.html',context)
+
+
+def deliver_service(request):
+
+        order_list=Post.objects.all().order_by('-created')
+        info=[]
+        for x in order_list:
+            y={'flnum':x.flat_number}
+            info.append(y)
+        print(info)
+        context={
+                'info':info
+            }    
+        return render(request,'shopkeeper2.html',context)
+
+class caretaker(ListView):
+    model = Item
+    template_name = 'received_orders.html'
+
+    def get_queryset(self):
+
+        category = self.kwargs.get('category')
+        
+        return Item.objects.filter(flat_number=category)
+
+
+
+class caretaker2(ListView):
+    model = Post
+    template_name = 'received_orders2.html'
+
+    def get_queryset(self):
+
+        category = self.kwargs.get('category')
+        print (category)
+        
+        
+        return Post.objects.filter(flat_number=category)
 
 
 

@@ -10,7 +10,10 @@ urlpatterns = [
 
             path('update',views.edit,name="update"),
             path('profile',views.profile,name="profile "),
-
+            path('shop_ct',views.deliver_item,name="shop_ct"),
+            path('service_ct',views.deliver_service,name="service_ct"),
+            path('category/<category>', views.caretaker.as_view(), name='caretaker'),
+            path('category2/<category>', views.caretaker2.as_view(), name='caretaker2'),
             url('', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
               

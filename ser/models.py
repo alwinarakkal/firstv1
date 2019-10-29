@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator
 class Post(models.Model):
 
     aut = models.CharField(max_length=255 )
-
+    flat_number = models.CharField(max_length=30)  
 
    
     time = models.CharField(max_length=255 )
@@ -27,6 +27,7 @@ class Item(models.Model):
     milk =  models.IntegerField(validators=[MinValueValidator(0)])
     rice =  models.IntegerField(validators=[MinValueValidator(0)])
     created = models.DateTimeField(auto_now_add=True,null=True)
+    flat_number = models.CharField(max_length=30)                       #######new for admin login
     def __str__(self):
         return self.aut
     def get_total(self):

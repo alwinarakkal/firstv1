@@ -18,13 +18,16 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def req(request):
     aut=request.user.username
+    current_user=request.user
+    obj=UserProfile.objects.get(user=current_user)
+    flat_number=obj.flat_number
     if request.method == "POST":
-        form = ser_req(request.POST,initial={'aut':aut})
+        form = ser_req(request.POST,initial={'aut':aut,'flat_number':flat_number})
         if form.is_valid():
             form.save()
             return redirect('email')    
     else:
-        form = ser_req(initial={'aut':aut})
+        form = ser_req(initial={'aut':aut,'flat_number':flat_number})
     context = {
         'form':form
     }
@@ -33,10 +36,13 @@ def req(request):
 
 
 @login_required
-def shop(request):                                              #neww
+def shop(request):                                             
     aut=request.user.username
+    current_user=request.user
+    obj=UserProfile.objects.get(user=current_user)
+    flat_number=obj.flat_number
     if request.method == "POST":
-        form = buy(request.POST,initial={'aut':aut})
+        form = buy(request.POST,initial={'aut':aut,'flat_number':flat_number})     #neww for admin login
         
        
         if form.is_valid():
@@ -45,7 +51,7 @@ def shop(request):                                              #neww
             return redirect('gmail')
 
     else:
-        form = buy(initial={'aut':aut})
+        form = buy(initial={'aut':aut,'flat_number':flat_number})
     context = {
         'form':form
     }

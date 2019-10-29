@@ -14,7 +14,7 @@ urlpatterns = [
     path('',include('signin.urls')),
     path('',include('blog.urls')),
     path('residents/',views.residents,name="residents"),
-    path('category/<category>', views.CategoryListView.as_view(), name='category-list'),
+    path('category3/<category>', views.CategoryListView.as_view(), name='category-list'),
    
     
 ]
