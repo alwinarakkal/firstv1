@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 
-@login_required
+# @login_required
 def blog_index(request):
     posts = Article.objects.all().order_by('-created_on')
                                                         #pagination

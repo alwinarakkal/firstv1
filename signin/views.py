@@ -106,7 +106,7 @@ def deliver_service(request):
         return render(request,'shopkeeper2.html',context)
 
 class caretaker(LoginRequiredMixin,ListView):
-    login_url = '/login/'
+    login_url = '/index/'
     
     model = Item
     template_name = 'received_orders.html'
@@ -123,7 +123,7 @@ class caretaker(LoginRequiredMixin,ListView):
 
 
 class caretaker2(LoginRequiredMixin,ListView):
-    login_url = '/login/'
+    login_url = '/index/'
    
     model = Post
     template_name = 'received_orders2.html'
