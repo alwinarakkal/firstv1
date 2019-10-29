@@ -6,7 +6,7 @@ from ser.models import Item,Post                                   ######for adm
 from django.views.generic import ListView, DetailView, View
 from django.core.paginator import Paginator
 from .forms import ExtendedUserCreationForm, UserProfileForm,Editprofile
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 
@@ -58,7 +58,7 @@ def index(request):
         context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
 
         return render(request, 'index.html', context)
-
+@login_required
 def deliver_item(request):
 
         order_list=Item.objects.all().order_by('-created')
@@ -82,7 +82,7 @@ def deliver_item(request):
             }    
         return render(request,'shopkeeper.html',context)
 
-
+@login_required
 def deliver_service(request):
 
         order_list=Post.objects.all().order_by('-created')
@@ -105,13 +105,15 @@ def deliver_service(request):
             }    
         return render(request,'shopkeeper2.html',context)
 
-class caretaker(ListView):
+class caretaker(LoginRequiredMixin,ListView):
+    login_url = '/login/'
+    
     model = Item
     template_name = 'received_orders.html'
 
 
 
-
+    
     def get_queryset(self):
 
         category = self.kwargs.get('category')
@@ -120,10 +122,12 @@ class caretaker(ListView):
 
 
 
-class caretaker2(ListView):
+class caretaker2(LoginRequiredMixin,ListView):
+    login_url = '/login/'
+   
     model = Post
     template_name = 'received_orders2.html'
-
+    
     def get_queryset(self):
 
         category = self.kwargs.get('category')
