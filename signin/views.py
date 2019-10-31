@@ -8,6 +8,7 @@ from django.core.paginator import Paginator
 from .forms import ExtendedUserCreationForm, UserProfileForm,Editprofile
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+import requests
 
 
 def index(request):
@@ -54,10 +55,24 @@ def index(request):
                 mobile_number='unknown'
                 first_name='unknown'
 
+    url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=4f3755118604d970d9bd420b4d9e1f11'
+    city='Kochi'
+    r = requests.get(url.format(city)).json()
+    print(r)
+    city_weather = {
+        'city' : city,
+        'temperature' : r['main']['temp'],
+        'description' : r['weather'][0]['description'],
+        'icon' : r['weather'][0]['icon'],
+        'wind':r['wind']['speed']
+    }
 
-        context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name}
 
-        return render(request, 'index.html', context)
+
+
+    context = {'username': username,'flat_number': flat_number,'mobile_number': mobile_number,'email':email,'first_name': first_name,'city_weather':city_weather}
+
+    return render(request, 'index.html', context)
 @login_required
 def deliver_item(request):
 
