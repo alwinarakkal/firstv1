@@ -58,13 +58,14 @@ def index(request):
     url = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=4f3755118604d970d9bd420b4d9e1f11'
     city='Kochi'
     r = requests.get(url.format(city)).json()
-    print(r)
+    # print(r)
     city_weather = {
         'city' : city,
         'temperature' : r['main']['temp'],
         'description' : r['weather'][0]['description'],
         'icon' : r['weather'][0]['icon'],
-        'wind':r['wind']['speed']
+        'wind':r['wind']['speed'],
+        
     }
 
 
@@ -146,7 +147,7 @@ class caretaker2(LoginRequiredMixin,ListView):
     def get_queryset(self):
 
         category = self.kwargs.get('category')
-        print (category)
+        # print (category)
         
         
         return Post.objects.filter(flat_number=category)
