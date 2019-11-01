@@ -1,12 +1,12 @@
 from django.shortcuts import render,redirect
 from signin.models import UserProfile                   #neww222
 from signin.forms import ExtendedUserCreationForm, UserProfileForm #neww222
-from .models import Post,Item
+from .models import Post,Item,quantity,orders
 from django.db.models import Q
 # Create your views here.
 from django.views.generic import ListView, DetailView, View
 from .forms import ser_req
-from .forms import buy
+from .forms import buy,number
 from django.core.paginator import Paginator
 
 #for email
@@ -41,22 +41,32 @@ def shop(request):
     current_user=request.user
     obj=UserProfile.objects.get(user=current_user)
     flat_number=obj.flat_number
+    items = orders.objects.all()
     if request.method == "POST":
         form = buy(request.POST,initial={'aut':aut,'flat_number':flat_number})     #neww for admin login
-        
+        form2= number(request.POST)
+        print (form2)
+        print("--------------------------------------------------------------------------")
+        print(form)
        
-        if form.is_valid():
+        if form.is_valid() and form2.is_valid():
             
             form.save()
-            return redirect('gmail')
 
+            print(form)
+            form2.save()
+            print(form2)
+            # return redirect('gmail')
+            return redirect('index')
     else:
         form = buy(initial={'aut':aut,'flat_number':flat_number})
+        form2= number(request.POST)
     context = {
-        'form':form
+        'form':form,'form2':form2,
+        'items':items
     }
-    return render(request, 'buy2.html', context)
-
+    # return render(request, 'buy2.html', context)
+    return render(request, 'buynew.html', context)
 @login_required
 def serv_mail(request):    
 
@@ -182,26 +192,28 @@ def Myreqview(request):              #display service requests
 def MyView(request):                #display ordered items
 
     query_results = Item.objects.all().order_by('-created')
+    q = quantity.objects.all()
     aut=request.user.username
 
    
-   
-   
-    paginator=Paginator(query_results,5)
-    try:
-        page = int(request.GET.get('page','1'))
-    except:
-        page = 1
-    try:
-        query_results = paginator.page(page)
-    except(EmptyPage, InvalidPage):
-        query_results=paginator.page(paginator.num_pages)
-                                                        #/pagination
+    # paginator=Paginator(query_results,5)
+    # try:
+    #     page = int(request.GET.get('page','1'))
+    # except:
+    #     page = 1
+    # try:
+    #     query_results = paginator.page(page)
+    # except(EmptyPage, InvalidPage):
+    #     query_results=paginator.page(paginator.num_pages)
+    #                                                     #/pagination
     context = {
         'details':query_results,
-        'aut':aut
+        'aut':aut,
+        'quantity':q
     }
-    return render(request, 'display.html',context)
+    print (q)
+    # return render(request, 'display.html',context)
+    return render(request, 'neworders.html',context)
 
 
 

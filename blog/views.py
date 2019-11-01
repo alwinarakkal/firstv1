@@ -29,11 +29,11 @@ def blog_index(request):
 @login_required
 def blog_detail(request, pk):
     post = Article.objects.get(pk=pk)
-    print(request.user.username)
+    # print(request.user.username)
     form = CommentForm()
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        print ("valid")
+        # print ("valid")
         if form.is_valid():
             comment = Comment(
                 author=form.cleaned_data["author"],
@@ -43,7 +43,7 @@ def blog_detail(request, pk):
             comment.save()
             return redirect('/h')
 
-    comments = Comment.objects.filter(post=post)
+    comments = Comment.objects.filter(post=post).order_by('-created_on')
     aut=request.user.username
     context = {
         "post": post,

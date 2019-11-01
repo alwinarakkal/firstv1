@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_content %}
+
+
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Shoping Cart</title>
+	<meta charset="UTF-8">
+</head>
+
+<style type="text/css">
+		span {cursor:pointer; }
+		
+		.minus, .plus{
+			width:30px;
+			height:38px;
+			background: #8080ff;
+			border-radius:4px;
+			padding:8px 5px 8px 5px;
+			border:1px solid #262323;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      color:black;
+		}
+		input{
+			height:40px;
+      width: 80px;
+      text-align: center;
+      font-size: 26px;
+			border:5px solid #2f2626;
+			border-radius:4px;
+      display: inline-block;
+      vertical-align: middle;
+		}	
+</style>
+		
+	<body>
+				<script type="text/javascript">
+			$(document).ready(function() {
+			$('.minus').click(function () {
+				var $input = $(this).parent().find('input');
+				var count = parseInt($input.val()) - 1;
+				count = count < 0 ? 0 : count;
+				$input.val(count);
+				$input.change();
+				return false;
+			});
+			$('.plus').click(function () {
+				var $input = $(this).parent().find('input');
+				$input.val(parseInt($input.val()) + 1);
+				$input.change();
+				return false;
+			});
+		});	
+
+
+
+	</script>
+
+
+
+	<form class="bg0 p-t-80 p-b-85" method="POST" >
+		 {% csrf_token %}
+                <div class="form-group"  style="  visibility: hidden;">
+                  <!-- {{form}} -->
+              	</div>
+              	 <div class="form-group"  >
+
+       {% for item in items %}
+              {{item.item1}}
+         
+        {% endfor %}
+              	</div>
+
+							<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer"  type="submit"  onclick="this.disabled=true" value="Submit" id="b">
+							Place Order
+						</button>
+              	
+
+   
+	</form>
+		
+	
+		
+
+
+
+</body>
+</html>
+
+
+
+{% endblock %}
