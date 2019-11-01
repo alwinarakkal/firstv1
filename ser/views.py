@@ -42,27 +42,27 @@ def shop(request):
     obj=UserProfile.objects.get(user=current_user)
     flat_number=obj.flat_number
     items = orders.objects.all()
-    if request.method == "POST":
-        form = buy(request.POST,initial={'aut':aut,'flat_number':flat_number})     #neww for admin login
-        form2= number(request.POST)
-        print (form2)
-        print("--------------------------------------------------------------------------")
-        print(form)
+    # if request.method == "POST":
+    #     form = buy(request.POST,initial={'aut':aut,'flat_number':flat_number})     #neww for admin login
+    #     form2= number(request.POST)
+    #     print (form2)
+    #     print("--------------------------------------------------------------------------")
+    #     print(form)
        
-        if form.is_valid() and form2.is_valid():
+    #     if form.is_valid() and form2.is_valid():
             
-            form.save()
+    #         form.save()
 
-            print(form)
-            form2.save()
-            print(form2)
-            # return redirect('gmail')
-            return redirect('index')
-    else:
-        form = buy(initial={'aut':aut,'flat_number':flat_number})
-        form2= number(request.POST)
+    #         print(form)
+    #         form2.save()
+    #         print(form2)
+    #         # return redirect('gmail')
+    #         return redirect('index')
+    # else:
+    #     form = buy(initial={'aut':aut,'flat_number':flat_number})
+    #     form2= number(request.POST)
     context = {
-        'form':form,'form2':form2,
+        # 'form':form,'form2':form2,
         'items':items
     }
     # return render(request, 'buy2.html', context)
@@ -241,3 +241,47 @@ class CategoryListView(ListView):
         category = self.kwargs.get('category')
     
         return UserProfile.objects.filter(flat_number=category)
+
+
+
+
+class BuyListView(ListView):
+    model = quantity
+    template_name = 'buydeatiled.html'
+
+    def get_queryset(self):
+
+        category = self.kwargs.get('category')
+        return quantity.objects.filter( t=category )
+
+    def get_context_data(self,**kwargs):
+        context = super(CarList,self).get_context_data(**kwargs)
+        context['picture'] = Picture.objects.filter(your_condition)
+        return context
+
+    def Post(request):
+        current_user=request.user
+        aut=request.user.username
+        mail=request.user.email
+        obj=UserProfile.objects.get(user=current_user)
+        flat_number=obj.flat_number
+        if request.method == "POST":
+            form= buy(request.POST,initial={'aut':aut,'flat_number':flat_number})     #neww for admin login
+            form2= number(request.POST)
+            print (form2)
+            print("--------------------------------------------------------------------------")
+            print(form)
+       
+            if form.is_valid() and form2.is_valid():
+                
+                form.save()
+                form2.save()
+                return redirect('index')
+        else:
+            form = buy(initial={'aut':aut,'flat_number':flat_number})
+            form2= number(request.POST)
+        context = {
+            'form':form,'form2':form2,'aut':aut,'flat_number':flat_number
+        }
+
+  

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+
+
+
+{% load static %}
+
+{% block page_content %}
+
+
+<body>
+
+
+
+
+<!-- {% for item in object_list %}
+{{item.qu}}
+{{item.t}}
+{{item.flat_number}}
+
+  {%  endfor %}
+ -->
+ <div class="jumbotron">asdasd
+ </div>
+  {% csrf_token %}
+ <form  method="POST" >
+          
+              {{form}}     
+           {% csrf_token %}
+           
+              	<input id="xt" class="input100" type="text" name="flat_number" placeholder="flat" required="">
+        <input id="xy" class="input100" type="text" name="aut" placeholder="aut" required="">
+            <input id="x" class="input100" type="number" name="qu" placeholder="quantity" required="">
+           
+             <button  onclick="this.disabled=true" class="login100-form-btn">
+              submit
+            </button>
+        
+          
+    </form>      
+
+
+      </body>
+      {% endblock %}}

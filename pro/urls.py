@@ -15,6 +15,7 @@ urlpatterns = [
     path('',include('blog.urls')),
     path('residents/',views.residents,name="residents"),
     path('category3/<category>', views.CategoryListView.as_view(), name='category-list'),
+    path('category_shop/<category>', views.BuyListView.as_view(), name='Buy-list'),
    
     
 ]
